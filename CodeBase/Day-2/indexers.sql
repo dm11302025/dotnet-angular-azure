@@ -1,1 +1,0 @@
-CREATE NONCLUSTERED INDEX IX_Products_Price ON Products(Price);
