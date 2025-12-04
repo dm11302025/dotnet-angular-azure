@@ -1,0 +1,6 @@
+@HandsOnAPIWithGenericRepositoryPattern_HostAddress = http://localhost:5291
+
+GET {{HandsOnAPIWithGenericRepositoryPattern_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###

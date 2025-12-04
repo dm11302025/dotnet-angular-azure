@@ -1,0 +1,6 @@
+@HandsOnAPIUsingStatusCodes_HostAddress = http://localhost:5074
+
+GET {{HandsOnAPIUsingStatusCodes_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###

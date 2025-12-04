@@ -1,0 +1,6 @@
+@HandsOnAPIUsingDI_latest_HostAddress = http://localhost:5091
+
+GET {{HandsOnAPIUsingDI_latest_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
