@@ -1,8 +1,5 @@
 
-using HandsOnAPIUsingDI_latest.Services;
-using Microsoft.Extensions.DependencyInjection;
-
-namespace HandsOnAPIUsingDI_latest
+namespace HandsOnAPIUsingEFDemo_1
 {
     public class Program
     {
@@ -11,11 +8,7 @@ namespace HandsOnAPIUsingDI_latest
             var builder = WebApplication.CreateBuilder(args);
 
             // Add services to the container.
-            builder.Services.AddTransient<TransientGuidService>();
-            builder.Services.AddScoped<ScopedGuidService>();
-            builder.Services.AddSingleton<SingletonGuidService>();
-            builder.Services.AddTransient<Car>(provider =>
-     new Car("BMW X5", "Black"));
+
             builder.Services.AddControllers();
             // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
             builder.Services.AddEndpointsApiExplorer();
