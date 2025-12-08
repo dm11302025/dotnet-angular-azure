@@ -4,7 +4,7 @@ namespace HandsOnAPIWithModelsAndDTOs.Repositories
 {
     public class ProductRepository : IProductRepository
     {
-        private readonly List<Product> _products = new();
+        private static readonly List<Product> _products = new();
 
         public IEnumerable<Product> GetAll() => _products;
 

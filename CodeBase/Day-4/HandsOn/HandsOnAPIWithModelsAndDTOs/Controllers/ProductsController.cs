@@ -25,6 +25,7 @@ namespace HandsOnAPIWithModelsAndDTOs.Controllers
         public ActionResult<IEnumerable<ProductReadDto>> GetAll()
         {
             var products = _repo.GetAll();
+            //convert List<Product> to List<ProductReadDto>
             return Ok(_mapper.Map<IEnumerable<ProductReadDto>>(products));
         }
 
@@ -42,7 +43,9 @@ namespace HandsOnAPIWithModelsAndDTOs.Controllers
         [HttpPost]
         public ActionResult<ProductReadDto> Create(ProductCreateDto dto)
         {
+            //converting dto to entity
             var product = _mapper.Map<Product>(dto);
+            //product.Id = 0;
             _repo.Add(product);
 
             var readDto = _mapper.Map<ProductReadDto>(product);

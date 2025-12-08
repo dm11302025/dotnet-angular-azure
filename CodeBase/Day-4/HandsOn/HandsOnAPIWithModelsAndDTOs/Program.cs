@@ -1,5 +1,6 @@
 using Microsoft.Extensions.DependencyInjection;
 using AutoMapper;
+using HandsOnAPIWithModelsAndDTOs.Repositories;
 namespace HandsOnAPIWithModelsAndDTOs
 {
     public class Program
@@ -9,10 +10,11 @@ namespace HandsOnAPIWithModelsAndDTOs
             var builder = WebApplication.CreateBuilder(args);
 
             // Add services to the container.
+            builder.Services.AddTransient<IProductRepository, ProductRepository>();
             // AutoMapper registration
-            builder.Services.AddAutoMapper(typeof(Program));
-
-            //builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
+            //builder.Services.AddAutoMapper(typeof(Program));
+           
+            builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
             builder.Services.AddControllers();
             // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
             builder.Services.AddEndpointsApiExplorer();
