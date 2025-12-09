@@ -1,0 +1,6 @@
+@HandsOnAPIUsingEFCoreDBFirst_HostAddress = http://localhost:5052
+
+GET {{HandsOnAPIUsingEFCoreDBFirst_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###

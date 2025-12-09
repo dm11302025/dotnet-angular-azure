@@ -1,0 +1,1 @@
+ Scaffold-DbContext "Data Source=DESKTOP-4O1D65I\SQLEXPRESS;Initial Catalog=BikeStores;Integrated Security=True;Trust Server Certificate=True" Microsoft.EntityFrameworkCore.SqlServer -OutputDir Enities    
