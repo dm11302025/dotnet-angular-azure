@@ -39,7 +39,7 @@ namespace HandsOnAPIUsingEFDemo_1.Controllers
             return Ok(employees);
         }
         [HttpGet("getemployee/{id}")]
-        public IActionResult GetEmployee(int id)
+        public IActionResult GetEmployee([FromRoute]int id)
         {
             var employee=employeeRepository.GetById(id);
             if (employee == null)
@@ -47,8 +47,8 @@ namespace HandsOnAPIUsingEFDemo_1.Controllers
             return Ok(employee);
 
         }
-        [HttpPut("editemployee{id}")]
-        public IActionResult EditEmployee(int id, Employee employee)
+        [HttpPut("editemployee")]
+        public IActionResult EditEmployee([FromQuery]int id, [FromBody]Employee employee)
         {
             var emp= employeeRepository.GetById(id);
             if(emp!=null)
