@@ -17,7 +17,7 @@ namespace HandsOnTask
             Program program = new Program();
             Task task=Task.Run(()=> program.Operation()); //Runs Operation in the thread pool (parallel to main thread).
             //Waiting for task to complete
-           task.Wait(); //Blocks Main method until the task is finished.
+          task.Wait(); //Blocks Main method until the task is finished.
             Console.WriteLine("Task Finished");
         }
     }

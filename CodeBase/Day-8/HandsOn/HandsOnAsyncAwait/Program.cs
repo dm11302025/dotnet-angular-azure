@@ -14,7 +14,7 @@
         public static async void M2()
         {
             Console.WriteLine("M2 Stared");
-            await Task.Delay(1000);  /*
+            await Task.Delay(10000);  /*
              Task.Dealy() executed, it will free the current thread, and then that 
             current thread comes and execute the rest of the code inside the main method. 
             And after 10 seconds again thread come back to the
@@ -28,6 +28,7 @@
             M2();
             Console.WriteLine("Hello, World!");
             Console.ReadKey();
+            
         }
     }
 }

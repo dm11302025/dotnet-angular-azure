@@ -22,8 +22,8 @@ namespace HandsOnAPIUsingMiddleware
             app.UseHttpsRedirection();
 
             // 1️⃣ Custom logging middleware
-            app.UseRequestLogging();
-            //app.UseMiddleware<RequestLoggingMiddleware>(); //add custome middleware
+           // app.UseRequestLogging();
+            app.UseMiddleware<RequestLoggingMiddleware>(); //add custome middleware
 
             // 2️⃣ Middleware that blocks /secret route
             app.UseSecretBlocker();

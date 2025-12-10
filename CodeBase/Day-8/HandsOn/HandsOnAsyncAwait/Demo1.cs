@@ -8,7 +8,7 @@ namespace HandsOnAsyncAwait
 {
     internal class Demo1
     {
-        static async void LongProcess()
+        static async Task LongProcess()
         {
             Console.WriteLine("LongProcess Started");
 
@@ -17,19 +17,23 @@ namespace HandsOnAsyncAwait
             Console.WriteLine("LongProcess Completed");
 
         }
-        static void ShortProcess()
+        static async Task ShortProcess()
         {
             Console.WriteLine("ShortProcess Started");
 
             //do something here
+            await Task.Delay(2000);
 
             Console.WriteLine("ShortProcess Completed");
         }
-        static void Main(string[] args)
+        static async Task Main(string[] args)
         {
-            LongProcess();
-            ShortProcess();
+            Task longTask = LongProcess();
+            Task shortTask = ShortProcess();
+
+            await Task.WhenAll(longTask, shortTask); // wait for both tasks to complete
             Console.ReadKey();
+            
         }
     }
 }
