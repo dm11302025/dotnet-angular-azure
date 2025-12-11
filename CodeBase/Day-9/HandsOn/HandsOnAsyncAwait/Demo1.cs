@@ -30,7 +30,7 @@ namespace HandsOnAsyncAwait
         {
             Task longTask = LongProcess();
             Task shortTask = ShortProcess();
-
+            //WhenAll waits for all the provided tasks to complete
             await Task.WhenAll(longTask, shortTask); // wait for both tasks to complete
             Console.ReadKey();
             
