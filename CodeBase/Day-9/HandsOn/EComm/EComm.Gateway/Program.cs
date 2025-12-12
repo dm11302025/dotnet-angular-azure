@@ -1,7 +1,8 @@
-using Microsoft.EntityFrameworkCore;
-using EComm.ProductService.Data;
 
-namespace EComm.ProductService
+using Ocelot.DependencyInjection;
+using Ocelot.Middleware;
+
+namespace EComm.Gateway
 {
     public class Program
     {
@@ -10,12 +11,8 @@ namespace EComm.ProductService
             var builder = WebApplication.CreateBuilder(args);
 
             // Add services to the container.
-
-            var connectionString = builder.Configuration.GetConnectionString("ProductDbConnection");
-            builder.Services.AddDbContext<ProductDbContext>
-                (options => options.UseSqlServer(connectionString));
-            builder.Services.AddTransient<Services.IProductService, Services.ProductService>();
-            builder.Services.AddTransient<Repositories.IProductRepository, Repositories.ProductRepository>();
+            builder.Configuration.AddJsonFile("ocelot.json", optional: false, reloadOnChange: true);
+            builder.Services.AddOcelot();
             builder.Services.AddControllers();
             // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
             builder.Services.AddEndpointsApiExplorer();
@@ -31,10 +28,8 @@ namespace EComm.ProductService
             }
 
             app.UseAuthorization();
-
-
             app.MapControllers();
-
+            app.UseOcelot();
             app.Run();
         }
     }
