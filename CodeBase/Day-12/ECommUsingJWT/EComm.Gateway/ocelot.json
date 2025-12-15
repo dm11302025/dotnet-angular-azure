@@ -1,0 +1,49 @@
+{
+	"Routes": [
+		{
+			"DownstreamPathTemplate": "/api/Product/{route}",
+			"DownstreamScheme": "http",
+			"DownstreamHostAndPorts": [
+				{
+					"Host": "localhost",
+					"Port": 5184
+				}
+			],
+			"UpstreamPathTemplate": "/product-service/{route}",
+			"UpstreamHttpMethod": [ "GET", "POST", "PUT", "DELETE" ],
+			"AuthenticationOptions": {
+				"AuthenticationProviderKey": "GatewayAuth"
+			}
+		},
+		{
+			"DownstreamPathTemplate": "/api/Order/{route}",
+			"DownstreamScheme": "http",
+			"DownstreamHostAndPorts": [
+				{
+					"Host": "localhost",
+					"Port": 5229
+				}
+			],
+			"UpstreamPathTemplate": "/order-service/{route}",
+			"UpstreamHttpMethod": [ "GET", "POST", "PUT", "DELETE" ],
+			"AuthenticationOptions": {
+				"AuthenticationProviderKey": "GatewayAuth"
+			}
+		},
+		{
+			"DownstreamPathTemplate": "/api/Identity/{route}",
+			"DownstreamScheme": "http",
+			"DownstreamHostAndPorts": [
+				{
+					"Host": "localhost",
+					"Port": 5090
+				}
+			],
+			"UpstreamPathTemplate": "/user-service/{route}",
+			"UpstreamHttpMethod": [ "GET", "POST", "PUT", "DELETE" ],
+		}
+	],
+	// Ocelot configuration settings
+	// See: https://ocelot.readthedocs.io/en/latest/features/configuration.html
+	"GlobalConfiguration": {} // Add any global configuration settings here
+}

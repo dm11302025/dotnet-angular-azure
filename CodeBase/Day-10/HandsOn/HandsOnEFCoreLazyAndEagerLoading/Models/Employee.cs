@@ -6,9 +6,10 @@
         public string FullName { get; set; }
 
         // Foreign Key
+       
         public int DepartmentId { get; set; }
 
         // Navigation Property
-        public virtual Department Department { get; set; }
+        public  Department Department { get; set; }
     }
 }

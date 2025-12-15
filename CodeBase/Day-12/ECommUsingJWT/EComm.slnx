@@ -1,0 +1,6 @@
+<Solution>
+  <Project Path="EComm.Gateway/EComm.Gateway.csproj" Id="3e7773f6-4657-4b2c-972a-8e72b1174061" />
+  <Project Path="EComm.IdentityService/EComm.IdentityService.csproj" />
+  <Project Path="EComm.OrderService/EComm.OrderService.csproj" />
+  <Project Path="EComm.ProductService/EComm.ProductService.csproj" />
+</Solution>

@@ -11,7 +11,9 @@ namespace EComm.Gateway
             var builder = WebApplication.CreateBuilder(args);
 
             // Add services to the container.
+            // Add Ocelot configuration file
             builder.Configuration.AddJsonFile("ocelot.json", optional: false, reloadOnChange: true);
+            // Add Ocelot services
             builder.Services.AddOcelot();
             builder.Services.AddControllers();
             // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
@@ -29,7 +31,7 @@ namespace EComm.Gateway
 
             app.UseAuthorization();
             app.MapControllers();
-            app.UseOcelot();
+            app.UseOcelot(); // Use Ocelot middleware
             app.Run();
         }
     }

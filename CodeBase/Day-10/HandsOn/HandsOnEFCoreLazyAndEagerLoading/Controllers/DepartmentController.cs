@@ -25,6 +25,9 @@ namespace HandsOnEFCoreLazyAndEagerLoading.Controllers
             var data = await _context.Departments
                                      .Include(d => d.Employees)
                                      .ToListAsync();
+            //var data = await _context.Departments
+            //                        .ThenInclude(d => d.Employees)
+            //                        .ToListAsync();
             return Ok(data);
     //        var departments = await _context.Departments
     //.Include(d => d.Employees)
@@ -48,15 +51,20 @@ namespace HandsOnEFCoreLazyAndEagerLoading.Controllers
         [HttpGet("lazy")]
         public async Task<IActionResult> GetDepartmentsLazy()
         {
-            var data = await _context.Departments.ToListAsync();
+            //var data = await _context.Departments.ToListAsync();
 
-            // Employees will load only when accessed here
-            //foreach (var d in data)
-            //{
-            //    var empCount = d.Employees.Count;
-            //}
+            //// Employees will load only when accessed here
+            ////foreach (var d in data)
+            ////{
+            ////    var empCount = d.Employees.Count;
+            ////}
 
-            return Ok(data);
+            //return Ok(data);
+            var department = await _context.Departments
+.FirstAsync(d => d.DepartmentId == 1);
+            // Employees not loaded yet
+            var employees = department.Employees; // Lazy load happens here
+            return Ok(department);
         }
 
         // Create a new Department
