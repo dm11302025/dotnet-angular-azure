@@ -37,5 +37,18 @@ namespace HandsOnSerilog.Controllers
                 return StatusCode(500);
             }
         }
+        [HttpPost]
+        public IActionResult Error()
+        {
+            try
+            {
+                throw new Exception("Simulated exception for logging demonstration");
+            }
+            catch(Exception ex)
+            {
+                _logger.LogError(ex, "An error occurred in the Error endpoint");
+                return StatusCode(500);
+            }
+        }
     }
 }

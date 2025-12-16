@@ -1,0 +1,6 @@
+@EComm.Gateway_HostAddress = http://localhost:5034
+
+GET {{EComm.Gateway_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###

@@ -1,5 +1,11 @@
+using Application.Contracts;
+using Application.Mappings;
+using Application.Services;
+using CleanArch.Infrastructure.Repositories;
+using Infrastructure.Data;
+using Microsoft.EntityFrameworkCore;
 
-namespace HandsOnLogging
+namespace ProductAPI
 {
     public class Program
     {
@@ -8,14 +14,18 @@ namespace HandsOnLogging
             var builder = WebApplication.CreateBuilder(args);
 
             // Add services to the container.
-          
+            builder.Services.AddDbContext<AppDBContext>(options =>
+    options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
+            builder.Services.AddScoped<IProductService, ProductService>();
+            builder.Services.AddScoped<IProductRepository, ProductRepository>();
+            //Configure Automapper to DI
+            builder.Services.AddAutoMapper(typeof(ProductMappingProfile).Assembly);
+
             builder.Services.AddControllers();
             // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
             builder.Services.AddEndpointsApiExplorer();
             builder.Services.AddSwaggerGen();
-            //builder.Logging.ClearProviders(); 
-            //builder.Logging.AddConsole();
-            //builder.Logging.AddDebug(); // Required for Visual Studio Debug window
+
             var app = builder.Build();
 
             // Configure the HTTP request pipeline.
@@ -24,8 +34,10 @@ namespace HandsOnLogging
                 app.UseSwagger();
                 app.UseSwaggerUI();
             }
-           app.UseMiddleware<RequestLoggingMiddleware>(); // Custom middleware for logging requests
+
             app.UseAuthorization();
+
+
             app.MapControllers();
 
             app.Run();
