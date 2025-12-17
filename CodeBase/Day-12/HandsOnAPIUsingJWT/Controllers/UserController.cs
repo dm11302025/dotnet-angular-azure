@@ -1,6 +1,7 @@
 ﻿using HandsOnAPIUsingJWT.Entities;
 using HandsOnAPIUsingJWT.Models;
 using HandsOnAPIUsingJWT.Repositories;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.IdentityModel.Tokens;
@@ -23,6 +24,7 @@ namespace HandsOnAPIUsingJWT.Controllers
         }
         // End Points
         [HttpPost("Register")]
+        [AllowAnonymous] // Allow anonymous access to this endpoint
         public async Task<IActionResult> Register([FromBody] User user)
         {
             if (user == null)
@@ -33,6 +35,7 @@ namespace HandsOnAPIUsingJWT.Controllers
             return Ok(user);
         }
         [HttpPost("Login")]
+        [AllowAnonymous]
         public async Task<IActionResult> Login([FromBody] LoginDTO login)
         {
             if (login == null || string.IsNullOrEmpty(login.Email) || string.IsNullOrEmpty(login.Password))
@@ -63,7 +66,8 @@ namespace HandsOnAPIUsingJWT.Controllers
             var claims = new[]
             {
         new Claim(ClaimTypes.Name, user.UserName),
-        new Claim(ClaimTypes.Role, user.Role)
+        new Claim(ClaimTypes.Role, user.Role),
+        new Claim(ClaimTypes.Email, user.Email)
     };
 
             //Define key
@@ -76,7 +80,7 @@ namespace HandsOnAPIUsingJWT.Controllers
                 issuer: configuration["Jwt:Issuer"], 
                 audience: configuration["Jwt:Audience"],
                 claims: claims,
-                expires: DateTime.UtcNow.AddMinutes(60),
+                expires: DateTime.UtcNow.AddMinutes(10),
                 signingCredentials: new SigningCredentials(key, SecurityAlgorithms.HmacSha256)
             );
             return new JwtSecurityTokenHandler().WriteToken(token);

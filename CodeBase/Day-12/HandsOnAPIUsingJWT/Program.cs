@@ -83,8 +83,8 @@ namespace HandsOnAPIUsingJWT
                 app.UseSwagger();
                 app.UseSwaggerUI();
             }
-            app.UseAuthentication();
-            app.UseAuthorization();
+            app.UseAuthentication(); //enable authentication middleware
+            app.UseAuthorization(); //enable authorization middleware
 
 
             app.MapControllers();

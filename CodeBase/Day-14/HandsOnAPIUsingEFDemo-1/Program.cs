@@ -12,8 +12,18 @@ namespace HandsOnAPIUsingEFDemo_1
             var builder = WebApplication.CreateBuilder(args);
 
             // Add services to the container.
-           
-            var connection = builder.Configuration.GetConnectionString("DefaultConnection");
+            //var keyVaultName = builder.Configuration["KeyVaultName"];
+            //if (!string.IsNullOrEmpty(keyVaultName))
+            //{
+            //    var kvUri = $"https://{keyVaultName}.vault.azure.net/";
+            //    builder.Configuration.AddAzureKeyVault(new Uri(kvUri), new DefaultAzureCredential());
+            //}
+            var keyUrl= builder.Configuration["KeyVaultUrl"];
+            var secretName= builder.Configuration["SecretName"];
+            var _secretClient = new SecretClient(new Uri(keyUrl), new DefaultAzureCredential());
+            KeyVaultSecret secret = await _secretClient.GetSecretAsync(secretName);
+            var connection = secret.Value;
+            //var connection = builder.Configuration.GetConnectionString("DefaultConnection");
             //configure the connectionstring
             builder.Services.AddDbContext<ApplicationContext>
                 (options=>options.UseSqlServer(connection));

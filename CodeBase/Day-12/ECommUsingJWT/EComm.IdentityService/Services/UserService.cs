@@ -46,7 +46,7 @@ namespace EComm.IdentityService.Services
             else
             {
                 //generate a simple token for demonstration purposes
-                var token = Convert.ToBase64String(Guid.NewGuid().ToByteArray());
+                //var token = Convert.ToBase64String(Guid.NewGuid().ToByteArray());
                 return new UserResponseDto
                 {
                     UserId = user.UserId,

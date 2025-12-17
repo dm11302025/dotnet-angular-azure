@@ -8,6 +8,7 @@ namespace HandsOnAPIUsingJWT.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
+    //[Authorize]
     public class ProductController : ControllerBase
     {
         private readonly IProductRepository productRepository;
@@ -18,14 +19,14 @@ namespace HandsOnAPIUsingJWT.Controllers
         }
         //End Points
         [HttpGet("GetAllProducts")]
-        [Authorize(Roles = "Admin,User")]
+        [Authorize]//access to every authenticated user 
         public async Task<IActionResult> GetAllProducts()
         {
             var products = await productRepository.GetAllProductsAsync();
             return Ok(products);
         }
         [HttpGet("GetProductById/{id}")]
-        [Authorize(Roles = "Admin,User")]
+        [Authorize(Roles = "Admin,User")] //access to authenticated users with Admin or User role
         public async Task<IActionResult> GetProductById(int id)
         {
             var product = await productRepository.GetProductByIdAsync(id);
