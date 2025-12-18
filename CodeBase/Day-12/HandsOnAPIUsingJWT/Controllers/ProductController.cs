@@ -8,7 +8,7 @@ namespace HandsOnAPIUsingJWT.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    //[Authorize]
+   
     public class ProductController : ControllerBase
     {
         private readonly IProductRepository productRepository;
