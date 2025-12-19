@@ -14,6 +14,7 @@ namespace HandsOnCQRS.CommandHandlers
 
         public async Task HandleAsync(CreateProductCommand command)
         {
+            //create product from command
             var product = new Product
             {
                 Name = command.Name,
