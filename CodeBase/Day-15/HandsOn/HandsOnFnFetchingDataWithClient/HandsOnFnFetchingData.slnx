@@ -1,0 +1,4 @@
+<Solution>
+  <Project Path="../FnClient/FnClient.csproj" />
+  <Project Path="HandsOnFnFetchingData.csproj" />
+</Solution>

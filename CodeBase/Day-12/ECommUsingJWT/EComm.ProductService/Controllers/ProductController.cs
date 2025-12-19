@@ -15,6 +15,7 @@ namespace EComm.ProductService.Controllers
             _productService = productService;
         }
         [HttpPost]
+        [Authorize(Roles ="Admin")]
         public async Task<IActionResult> CreateProduct([FromBody] Product product)
         {
             await _productService.CreateProduct(product);

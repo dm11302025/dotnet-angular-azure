@@ -23,11 +23,11 @@ namespace HandsOnAPIUsingEFDemo_1
             }
 
             // DbContext
-            //var cs = builder.Configuration.GetConnectionString("DefaultConnection");
-            //if (string.IsNullOrWhiteSpace(cs))
-            //{
-            //    throw new Exception("Connection string NOT resolved from Key Vault");
-            //}
+            var cs = builder.Configuration.GetConnectionString("DefaultConnection");
+            if (string.IsNullOrWhiteSpace(cs))
+            {
+                throw new Exception("Connection string NOT resolved from Key Vault");
+            }
             builder.Services.AddDbContext<ApplicationContext>(options =>
                 options.UseSqlServer(
                     builder.Configuration.GetConnectionString("DefaultConnection")));
