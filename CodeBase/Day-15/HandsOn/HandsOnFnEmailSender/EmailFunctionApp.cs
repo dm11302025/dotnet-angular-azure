@@ -42,7 +42,7 @@ public class EmailFunctionApp
             };
             var mailMessage = new MailMessage
             {
-                From = new MailAddress("santuparsi@gmail.com"),
+                From = new MailAddress(gmailUser),
                 Subject = subject ?? "Azure Function Email",
                 Body = body ?? "Hello from Azure Function",
                 IsBodyHtml = false
