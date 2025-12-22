@@ -1,0 +1,21 @@
+<Solution>
+  <Folder Name="/IdentityService/">
+    <Project Path="Identity.API/Identity.API.csproj" />
+    <Project Path="Identity.Application/Identity.Application.csproj" />
+    <Project Path="Identity.Domain/Identity.Domain.csproj" />
+    <Project Path="Identity.Infrastructure/Identity.Infrastructure.csproj" />
+  </Folder>
+  <Folder Name="/OrderService/">
+    <Project Path="Order.API/Order.API.csproj" />
+    <Project Path="Order.Application/Order.Application.csproj" />
+    <Project Path="Order.Domain/Order.Domain.csproj" />
+    <Project Path="Order.Infrastructure/Order.Infrastructure.csproj" />
+  </Folder>
+  <Folder Name="/ProductService/">
+    <Project Path="Product.API/Product.API.csproj" />
+    <Project Path="Product.Application/Product.Application.csproj" />
+    <Project Path="Product.Domain/Product.Domain.csproj" />
+    <Project Path="Product.Infrastructure/Product.Infrastructure.csproj" />
+  </Folder>
+  <Project Path="APIGateway/APIGateway.csproj" />
+</Solution>
