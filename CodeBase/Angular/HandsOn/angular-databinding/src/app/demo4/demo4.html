@@ -1,0 +1,34 @@
+<div>
+    <ul *ngFor="let city of cities">
+        <li>{{city}}</li>
+    </ul>
+    <ul>
+        @for (item of cities; track $index) {
+        <li>{{item}}</li>
+        }
+    </ul>
+    <hr>
+    <table border="1" style="width: 250px;">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Price</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let product of products">
+                <td>{{product.Id}}</td>
+                <td>{{product.Name}}</td>
+                <td>{{product.Price}}</td>
+            </tr>
+            @for (product of products; track product.Id) {
+            <tr>
+                <td>{{product.Id}}</td>
+                <td>{{product.Name}}</td>
+                <td>{{product.Price}}</td>
+            </tr>
+            }
+        </tbody>
+    </table>
+</div>
