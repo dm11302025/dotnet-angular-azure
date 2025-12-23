@@ -1,0 +1,70 @@
+<div class="container">
+    <table class="table">
+        <tr>
+            <td>Title</td>
+            <td>
+                <input type="text" [(ngModel)]="book.Title" class="form-control">
+            </td>
+        </tr>
+        <tr>
+            <td>Author</td>
+            <td>
+                <input type="text" [(ngModel)]="book.Author" class="form-control">
+            </td>
+        </tr>
+        <tr>
+            <td>Language</td>
+            <td>
+                <select [(ngModel)]="book.Lang" class="dropdown">
+                    @for(lang of language;track $index)
+                    {
+                    <option>{{lang}}</option>
+                    }
+                </select>
+            </td>
+        </tr>
+        <tr>
+            <td>Price</td>
+            <td>
+                <input type="number" [(ngModel)]="book.Price" class="form-control">
+            </td>
+        </tr>
+        <tr>
+            <td>Publish Date</td>
+            <td>
+                <input type="date" [(ngModel)]="book.PubDate" class="form-control">
+            </td>
+        </tr>
+        <tr>
+            <td colspan="2">
+                <button (click)="save()" class="btn btn-primary">Save</button>
+            </td>
+        </tr>
+    </table>
+    <hr>
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th>ISBN</th>
+                <th>Title</th>
+                <th>Author</th>
+                <th>Price</th>
+                <th>Language</th>
+                <th>Publish</th>
+            </tr>
+        </thead>
+        <tbody>
+            @for(item of books;track item.ISBN)
+            {
+            <tr>
+                <td>{{item.ISBN}}</td>
+                <td>{{item.Title}}</td>
+                <td>{{item.Author}}</td>
+                <td>{{item.Price}}</td>
+                <td>{{item.Lang}}</td>
+                <td>{{item.PubDate}}</td>
+            </tr>
+            }
+        </tbody>
+    </table>
+</div>

@@ -1,0 +1,32 @@
+<div class="container">
+    <ul>
+        @for(color of colors;track color) {
+        <li>{{color}}</li>
+        }
+    </ul>
+    <hr>
+    <ol>
+        <li *ngFor="let city of cities">{{city}}</li>
+    </ol>
+    <hr>
+    cities:<select>
+        @for(city of cities;track $index)
+        {
+        <option>{{city}}</option>
+        }
+    </select>
+    <hr>
+    <table class="table">
+        <thead>
+            <th>Cities</th>
+        </thead>
+        <tbody>
+            @for(city of cities;track city)
+            {
+            <tr>
+                <td>{{city}}</td>
+            </tr>
+            }
+        </tbody>
+    </table>
+</div>

@@ -1,0 +1,31 @@
+<div class="container">
+    <h2>Product Details</h2>
+    <pre>
+        Id:{{product.Id}}
+        Name:{{product.Name}}
+        Price:{{product.Price}}
+        Stock:{{product.Stock}}
+    </pre>
+    <hr>
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <td>Id</td>
+                <td>Name</td>
+                <td>Price</td>
+                <td>Stock</td>
+            </tr>
+        </thead>
+        <tbody>
+            @for(item of products;track item.Id)
+            {
+            <tr>
+                <td>{{item.Id}}</td>
+                <td>{{item.Name}}</td>
+                <td>{{item.Price}}</td>
+                <td>{{item.Stock}}</td>
+            </tr>
+            }
+        </tbody>
+    </table>
+</div>

@@ -1,0 +1,11 @@
+<div>
+    Select Role:<select [(ngModel)]="userRole">
+        <option *ngFor="let role of roles">{{role}}</option>
+    </select>
+</div>
+<div [ngSwitch]="userRole">
+  <p *ngSwitchCase="'admin'">👨‍💻 You are an Admin</p>
+  <p *ngSwitchCase="'editor'">✍️ You are an Editor</p>
+  <p *ngSwitchCase="'viewer'">👀 You are a Viewer</p>
+  <p *ngSwitchDefault>❓ Unknown Role</p>
+</div>

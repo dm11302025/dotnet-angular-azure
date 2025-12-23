@@ -1,0 +1,16 @@
+<h1 class="text-info">One-Way-DataBinding</h1>
+<div class="container">
+    <h2>Interpolation</h2>
+    <h3>Welcome {{name}}</h3>
+    <h3>Your age is {{age}}</h3>
+    <h3>Your address is {{address}}</h3>
+    <h3> Status: {{isEmployee?'Employee':'Student'}}</h3>
+    @if(isEmployee){
+    <h3>Your Salary is {{salary}}</h3>
+    }
+    <!-- older way of using ngIf -->
+    <div *ngIf="isEmployee">
+        <h3>Your Salary is {{salary}}</h3>
+    </div>
+
+</div>

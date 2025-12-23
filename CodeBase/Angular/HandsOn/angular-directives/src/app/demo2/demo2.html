@@ -1,0 +1,9 @@
+<div *ngIf="isLoggedIn; else loginBlock">
+    <p>Welcome back, {{username}}! 🎉</p>
+    <button (click)="logOut()">LogOut</button>
+</div>
+
+<ng-template #loginBlock>
+    <p>Please <a href="#">login</a> to continue.</p>
+    <button (click)="logIn()">LogIn</button>
+</ng-template>

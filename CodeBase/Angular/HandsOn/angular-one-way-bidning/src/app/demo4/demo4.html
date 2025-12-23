@@ -1,0 +1,15 @@
+<div class="container">
+    <p>Count:{{count}}</p>
+    <button (click)="increment()">Click</button>
+    <button (click)="Save()">Save</button>
+    <div *ngIf="isShow">
+        <h2>Product Details</h2>
+        <pre>
+        Id:{{product?.Id}}
+        Name:{{product?.Name}}
+        Price:{{product?.Price}}
+        Stock:{{product?.Stock}}
+    </pre>
+    </div>
+   
+</div>

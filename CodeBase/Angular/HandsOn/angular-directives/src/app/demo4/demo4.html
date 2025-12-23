@@ -1,0 +1,5 @@
+<ul>
+    <li *ngFor="let task of tasks" [ngClass]="{'completed': task.done, 'pending': !task.done}">
+        {{task.title}}
+    </li>
+</ul>

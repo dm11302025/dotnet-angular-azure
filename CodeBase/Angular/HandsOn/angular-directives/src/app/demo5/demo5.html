@@ -1,0 +1,6 @@
+<ul>
+    <li *ngFor="let item of stockList"
+     [ngStyle]="{'color': item.quantity < 10 ? 'red' : 'green'}">
+        {{item.name}} - Qty: {{item.quantity}}
+    </li>
+</ul>

@@ -1,0 +1,30 @@
+<div class="container my-4">
+  <h3 class="mb-3">Users</h3>
+  <table class="table table-bordered table-striped">
+    <thead class="table-primary">
+      <tr>
+        <th>#</th>
+        <th>Name</th>
+        <th>Email</th>
+        <th>Role</th>
+        <th>Status</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let user of users; let i = index">
+        <td>{{ i + 1 }}</td>
+        <td>{{ user.name }}</td>
+        <td>{{ user.email }}</td>
+        <td>{{ user.role }}</td>
+        <td>
+          <span [ngClass]="{
+            'badge bg-success': user.status === 'Active',
+            'badge bg-secondary': user.status === 'Inactive'
+          }">
+            {{ user.status }}
+          </span>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

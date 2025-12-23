@@ -1,0 +1,6 @@
+<h3>Product List</h3>
+<ul>
+    <li *ngFor="let product of products; index as i">
+        {{i+1}}. {{product.name}} - ${{product.price}}
+    </li>
+</ul>

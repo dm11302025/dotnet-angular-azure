@@ -1,0 +1,33 @@
+<h2>Product Management</h2>
+
+<!-- Loading State -->
+<!-- Product Form -->
+<form (ngSubmit)="isEditing ? updateProduct() : addProduct()">
+
+    <input type="text" placeholder="Product Name" name="name" [(ngModel)]="productForm.name" required />
+
+    <input type="number" placeholder="Price" name="price" [(ngModel)]="productForm.price" required />
+
+    <button type="submit">
+        {{ isEditing ? 'Update' : 'Add' }} Product
+    </button>
+
+    @if (isEditing) {
+    <button type="button" (click)="resetForm()">Cancel</button>
+    }
+</form>
+
+<hr />
+
+<!-- Product List -->
+@for (product of products; track product.id; let i = $index) {
+<div>
+    <strong>{{ i + 1 }}.</strong>
+    {{ product.name }} - ₹{{ product.price }}
+
+    <button (click)="editProduct(product)">Edit</button>
+    <button (click)="deleteProduct(product.id)">Delete</button>
+</div>
+} @empty {
+<p>No products available.</p>
+}

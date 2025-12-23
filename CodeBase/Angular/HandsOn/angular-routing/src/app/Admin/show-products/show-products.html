@@ -1,0 +1,28 @@
+<div class="container my-4">
+    <h3 class="mb-3">Product List</h3>
+    <table class="table table-bordered table-striped">
+        <thead class="table-primary">
+            <tr>
+                <th>#</th>
+                <th>Image</th>
+                <th>Name</th>
+                <th>Description</th>
+                <th>Price (₹)</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let product of products; let i = index">
+                <td>{{ i + 1 }}</td>
+                <td>
+                    <img [src]="product.image" [alt]="product.name" width="50" height="50" style="object-fit:contain;">
+                </td>
+                <td>{{ product.name }}</td>
+                <td>{{ product.description }}</td>
+                <td>{{ product.price }}</td>
+                <td>
+                    <button class="btn btn-sm btn-warning me-2">Edit</button>
+                    <button class="btn btn-sm btn-danger">Delete</button>
+                </td>
+            </tr>
+        </tbody>
