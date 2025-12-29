@@ -1,0 +1,4 @@
+<Solution>
+  <Project Path="BusinessApp/BusinessApp.csproj" />
+  <Project Path="XunitTestProject/XunitTestProject.csproj" />
+</Solution>

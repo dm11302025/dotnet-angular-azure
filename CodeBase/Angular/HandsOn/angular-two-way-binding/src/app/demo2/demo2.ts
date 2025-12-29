@@ -12,6 +12,7 @@ export class Demo2 {
   book: Book;
   books: Book[] = []; //book array
   language: string[] = ["English", "Hindi", "Telugu", "Tamil"];
+  IsVisible: boolean = false;
   constructor() {
     //initiate book object
     this.book = {
@@ -20,6 +21,8 @@ export class Demo2 {
     }
   }
   save() {
+
+    this.IsVisible = true;
     this.book.ISBN = Math.floor(Math.random() * 409328439)
     //add book details to the array
     this.books.push(this.book);

@@ -21,6 +21,7 @@ namespace OrderService.Messaging
 
         public async Task SendAsync(ReserveInventoryCommand command)
         {
+            // Serialize the command to JSON
             var json = JsonSerializer.Serialize(command);
             // Create a Service Bus message
             var message = new ServiceBusMessage(json)
@@ -28,6 +29,7 @@ namespace OrderService.Messaging
                 Subject = "ReserveInventory"
             };
             // Send the message to the queue
+            // sending message to "inventory-queue"(ServiceBus:QueueName)
             await _sender.SendMessageAsync(message);
         }
     }

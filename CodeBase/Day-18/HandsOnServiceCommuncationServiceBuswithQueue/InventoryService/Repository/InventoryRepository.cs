@@ -16,10 +16,16 @@ namespace InventoryService.Repository
         public void ReduceStock(int productId, int quantity)
         {
             var item = GetByProductId(productId);
+            
             if (item != null)
             {
                 item.AvailableQuantity -= quantity;
             }
+        }
+        public bool CheckStock(int productId, int quantity)
+        {
+            var item = GetByProductId(productId);
+            return item != null && item.AvailableQuantity >= quantity;
         }
     }
 }

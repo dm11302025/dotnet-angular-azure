@@ -7,6 +7,7 @@ namespace OrderService.Repository
         private static readonly List<Order> _orders = new();
         private static int _id = 1;
 
+        // Add a new order to the repository
         public Order Add(Order order)
         {
             order.Id = _id++;

@@ -42,13 +42,26 @@ namespace InventoryService.Messaging
             var json = args.Message.Body.ToString();
             // Convert to ReserveInventoryCommand
             var command = JsonSerializer.Deserialize<ReserveInventoryCommand>(json);
+            bool available = _repository.CheckStock(command.ProductId, command.Quantity);
+            if (!available)
+            {
+                Console.WriteLine(
+                    $"Insufficient stock for Product {command.ProductId}");
+                // Abandon the message so it can be retried or dead-lettered
+                await args.AbandonMessageAsync(args.Message);
+                return;
+            }
+            else
+            {
+                _repository.CheckStock(command.ProductId, command.Quantity);
+                _repository.ReduceStock(command.ProductId, command.Quantity);
 
-            _repository.ReduceStock(command.ProductId, command.Quantity);
+                Console.WriteLine(
+                    $"Stock reduced for Product {command.ProductId}");
 
-            Console.WriteLine(
-                $"Stock reduced for Product {command.ProductId}");
-
-            await args.CompleteMessageAsync(args.Message);
+                // Complete the message so that it is not received again.
+                await args.CompleteMessageAsync(args.Message);
+            }
         }
 
         // Handle any errors when receiving messages
