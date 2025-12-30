@@ -45,7 +45,13 @@ namespace HandsOnAPIUsingJWT.Controllers
             var validatedUser = await userRepository.Validate(login.Email, login.Password);
             if (validatedUser == null)
             {
-                return Unauthorized();
+                var response = new UserResponseDTO()
+                {
+                    UserId = "",
+                    Role = "Invalid",
+                    Token = string.Empty
+                };
+                return Ok(response);
             }
             else
             {

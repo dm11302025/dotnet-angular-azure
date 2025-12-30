@@ -1,0 +1,17 @@
+<!-- student-list.component.html -->
+<div class="card shadow-sm">
+    <div class="card-header bg-primary text-white">
+        <h5 class="mb-0">Student List</h5>
+    </div>
+    <ul class="list-group list-group-flush">
+        <li *ngFor="let student of students"
+            class="list-group-item list-group-item-action d-flex justify-content-between align-items-center"
+            (click)="onSelect(student)">
+            <span>
+                <i class="bi bi-person-circle me-2"></i>
+                {{ student.name }}
+            </span>
+            <span class="badge bg-info">{{ student.grade }}</span>
+        </li>
+    </ul>
+</div>

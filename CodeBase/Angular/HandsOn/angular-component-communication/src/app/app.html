@@ -1,0 +1,13 @@
+<!-- <app-parent></app-parent> -->
+<!-- <app-parent-1></app-parent-1> -->
+ <!-- app.component.html -->
+<div class="container mt-4">
+  <div class="row">
+    <div class="col-md-5">
+      <app-student-list (studentSelected)="onStudentSelected($event)"></app-student-list>
+    </div>
+    <div class="col-md-7">
+      <app-student-detail [student]="selectedStudent"></app-student-detail>
+    </div>
+  </div>
+</div>

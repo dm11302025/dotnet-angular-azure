@@ -19,10 +19,10 @@ export class Login {
     this.http.post<any>('http://localhost:5197/api/User/Login', this.login)
       .subscribe(data => {
         console.log(data);
-        if (data != null) {
+        if (data.token != '') {
           // Store JWT token in local storage for future use
           localStorage.setItem('jwt', data.token);
-          localStorage.setItem('active',"active")
+          localStorage.setItem('active', "active")
           if (data.role === 'Admin') {
             this.router.navigate(['/admin-dashboard']);
           }
@@ -33,7 +33,7 @@ export class Login {
         else {
           // Handle login failure
           this.errMessage = "Invalid email or password. Please try again.  ";
-         // console.log(this.errMessage);
+          // console.log(this.errMessage);
         }
 
       });

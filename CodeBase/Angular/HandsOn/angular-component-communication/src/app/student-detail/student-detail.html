@@ -1,0 +1,18 @@
+<!-- student-detail.component.html -->
+<div class="card shadow-sm mt-3">
+    <div class="card-header bg-success text-white">
+        <h5 class="mb-0">Student Details</h5>
+    </div>
+    <div class="card-body" *ngIf="student; else noSelection">
+        <p><b>ID:</b> {{ student.id }}</p>
+        <p><b>Name:</b> {{ student.name }}</p>
+        <p><b>Age:</b> {{ student.age }}</p>
+        <p><b>Grade:</b> <span class="badge bg-warning text-dark">{{ student.grade }}</span></p>
+    </div>
+</div>
+
+<ng-template #noSelection>
+    <div class="alert alert-secondary mt-3">
+        Please select a student from the list.
+    </div>
+</ng-template>
