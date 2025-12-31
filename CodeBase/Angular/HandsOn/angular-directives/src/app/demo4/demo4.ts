@@ -11,7 +11,7 @@ export class Demo4 {
   tasks = [
     { title: "Pay Bills", done: true },
     { title: "Go Shopping", done: false },
-    { title: "Finish Angular Project", done: true }
+    { title: "Finish Angular Project", done: false }
   ];
 
 }

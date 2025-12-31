@@ -13,6 +13,9 @@ export class TemplateDemo1 {
   onSubmit(form: NgForm) {
     this.submitted = true;
     console.log(form.value); // { name: "John", email: "john@example.com" }
+    console.log(form.value.name); // John
+    console.log(form.value.email); // john@example.com
+
   }
 
 }

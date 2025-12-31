@@ -8,7 +8,7 @@ import { Child } from "../child/child";
   styleUrl: './parent.css'
 })
 export class Parent {
-  parentMesage: string = "Hello Child Component";
+  parentMesage: string = "";
   changeMessage() {
     this.parentMesage = "Goodbye Child Component! I've changed the message.";
   }

@@ -12,6 +12,5 @@ export class Child1 {
   sendMessage() {
     // Emitting the message to parent component
     this.eventObject.emit(this.message);
-
   }
 }
