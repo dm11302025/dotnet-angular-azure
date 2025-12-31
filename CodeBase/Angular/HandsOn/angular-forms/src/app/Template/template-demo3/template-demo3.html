@@ -1,0 +1,40 @@
+<form #regForm="ngForm" (ngSubmit)="onSubmit(regForm)" class="container mt-4 p-4 border rounded shadow-sm col-md-6">
+
+    <h3 class="mb-3">Template-driven Registration</h3>
+
+    <!-- Name -->
+    <div class="mb-3">
+        <label class="form-label">Name</label>
+        <input type="text" name="name" ngModel required minlength="3" #name="ngModel" class="form-control"
+            [ngClass]="{'is-invalid': name.invalid && (name.dirty || name.touched)}">
+        <div class="invalid-feedback" *ngIf="name.errors?.['required']">Name is required</div>
+        <div class="invalid-feedback" *ngIf="name.errors?.['minlength']">Name must be at least 3 characters</div>
+    </div>
+
+    <!-- Email -->
+    <div class="mb-3">
+        <label class="form-label">Email</label>
+        <input type="email" name="email" ngModel required email #email="ngModel" class="form-control"
+            [ngClass]="{'is-invalid': email.invalid && (email.dirty || email.touched)}">
+        <div class="invalid-feedback" *ngIf="email.errors?.['required']">Email is required</div>
+        <div class="invalid-feedback" *ngIf="email.errors?.['email']">Invalid email format</div>
+    </div>
+
+    <!-- Password -->
+    <div class="mb-3">
+        <label class="form-label">Password</label>
+        <input type="password" name="password" ngModel required minlength="6" #password="ngModel" class="form-control"
+            [ngClass]="{'is-invalid': password.invalid && (password.dirty || password.touched)}">
+        <div class="invalid-feedback" *ngIf="password.errors?.['required']">Password is required</div>
+        <div class="invalid-feedback" *ngIf="password.errors?.['minlength']">Password must be at least 6 characters
+        </div>
+    </div>
+
+    <button type="submit" class="btn btn-primary w-100" [disabled]="regForm.invalid">Register</button>
+</form>
+<div *ngIf="submitted" class="container mt-4 p-4 border rounded shadow-sm col-md-6">
+    <h3>Form Submitted Successfully!</h3>
+    <p><strong>Name:</strong> {{ regForm.value.name }}</p>
+    <p><strong>Email:</strong> {{ regForm.value.email }}</p>
+    <p><strong>Password:</strong> {{ regForm.value.password }}</p>
+</div>
