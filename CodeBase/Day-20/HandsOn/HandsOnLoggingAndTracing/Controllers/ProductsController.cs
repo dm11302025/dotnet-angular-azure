@@ -19,6 +19,7 @@ namespace HandsOnLoggingAndTracing.Controllers
         public IActionResult Get(int id)
         {
             _logger.LogInformation("Fetching product with Id {ProductId}", id);
+            _logger.LogTrace("Trace log for product Id {ProductId}", id);
 
             if (id <= 0)
             {
