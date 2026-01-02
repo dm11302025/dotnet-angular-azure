@@ -8,15 +8,18 @@ import { DataSharingService } from '../services/data-sharing';
     <p>Received Message: {{ message }}</p>
   `
 })
-export class ReceiverComponent implements OnInit {
+export class Receiver implements OnInit {
 
   message!: string;
 
-  constructor(private dataService: DataSharingService) {}
+  constructor(private dataService: DataSharingService) { }
 
   ngOnInit(): void {
+    // Subscribe to the message observable to get updates
     this.dataService.message$.subscribe(value => {
+      console.log('Received message:', value);
       this.message = value;
+      console.log('Updated local message property:', this.message);
     });
   }
 }
