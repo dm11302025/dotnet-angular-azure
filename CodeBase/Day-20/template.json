@@ -5,18 +5,18 @@
     "appServiceName": {
       "type": "string",
       "metadata": {
-        "description": "Name of the App Service"
+        "description": "myserviceapp1226"
       }
     },
     "appServicePlanName": {
       "type": "string",
       "metadata": {
-        "description": "Name of the App Service Plan"
+        "description": "myserviceplan1226"
       }
     },
     "location": {
       "type": "string",
-      "defaultValue": "East US"
+      "defaultValue": "Central India"
     }
   },
   "resources": [
